@@ -14,5 +14,4 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
     List<Livro> findByCpfContainingIgnoreCase(String cpf);
 
     List<Livro> findByEnderecoContainingIgnoreCase(String endereco);
-
 }

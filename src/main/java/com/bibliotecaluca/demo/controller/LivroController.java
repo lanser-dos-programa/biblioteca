@@ -28,4 +28,9 @@ public class LivroController {
     public ResponseEntity<List<Livro>>listarLivros() {
         return ResponseEntity.ok(service.listarLivros());
     }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable @Validated Long id){
+        service.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
 }

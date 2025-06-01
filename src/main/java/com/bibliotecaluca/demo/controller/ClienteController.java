@@ -3,6 +3,7 @@ package com.bibliotecaluca.demo.controller;
 import com.bibliotecaluca.demo.model.Cliente;
 import com.bibliotecaluca.demo.service.ClienteService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,9 +26,13 @@ public class ClienteController {
     }
 
     @GetMapping("/view")
-    public ResponseEntity<List<Cliente>>listarCliente() {
+    public ResponseEntity<List<Cliente>> listarCliente() {
         return ResponseEntity.ok(service.listarCliente());
     }
 
-
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable @Validated Long id){
+        service.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
 }
